@@ -2,11 +2,22 @@ package com.nelioalves.cursomc.domain;
 
 import java.io.Serializable;
 
-//Serializable -> Interface que garante que a classe possa ser convertida em bytes, 
-				//isso serve para que os objetos sejam gravados em arquivos (Exigencia linguagem java)
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+/*
+*Serializable -> Interface que garante que a classe possa ser convertida em bytes, 
+*isso serve para que os objetos sejam gravados em arquivos (Exigencia linguagem java)
+*/
+
+@Entity
 public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L; //Ligado ao Serializable, indicando que é a primeira versão da classe padrão 1
 	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY) //IDENTITY -> Id geração de id automatico
 	private Integer id;
 	private String nome;
 	
