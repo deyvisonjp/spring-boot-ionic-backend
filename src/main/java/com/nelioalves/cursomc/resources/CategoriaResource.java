@@ -1,10 +1,9 @@
 package com.nelioalves.cursomc.resources;
 
 /*
- * @PachVariable -> Serve para reconhecer o comando da url seja reconhecido aqui na variavel id
+ * @PachVariable -> Serve para reconhecer o comando da url aqui na variavel id
  * ResponseEntity -> Encapsula (armazena) respostas http no servi rest
  */
-
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
