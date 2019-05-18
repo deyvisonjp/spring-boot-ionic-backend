@@ -3,10 +3,12 @@ package com.nelioalves.cursomc.services;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.nelioalves.cursomc.domain.Categoria;
 import com.nelioalves.cursomc.repositories.CategoriaRepository;
+import com.nelioalves.cursomc.services.exceptions.DataIntegrityException;
 import com.nelioalves.cursomc.services.exceptions.ObjectNotFoundException;
 
 @Service
@@ -30,6 +32,16 @@ public class CategoriaService {
 	public Categoria update(Categoria obj) {
 		find(obj.getId()); //Antes de atualizar os dados o find verifica testando a existencia
 		return repo.save(obj);
+	}
+	
+	public void delete(Integer id) {
+		find(id);
+		try {
+			repo.deleteById(id);
+		}
+		catch (DataIntegrityViolationException e) { //-->Cod de erro retirado do erro ao deletar no postaman
+			throw new DataIntegrityException("Não é possivel excluir uma categoria, que já possui produtos.");
+		}
 	}
 	
 }
