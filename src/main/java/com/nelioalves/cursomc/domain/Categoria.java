@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 /*
 *Serializable -> Interface que garante que a classe possa ser convertida em bytes, 
@@ -26,7 +25,6 @@ public class Categoria implements Serializable {
 	private Integer id;
 	private String nome;
 	
-	@JsonManagedReference
 	@ManyToMany(mappedBy="categorias") //Mapeia com a instancias categorias dentro de Produto
 	private List<Produto> produtos = new ArrayList<>();
 	
