@@ -1,5 +1,6 @@
-package com.nelioalves.cursomc.services;
+  package com.nelioalves.cursomc.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,6 +43,10 @@ public class CategoriaService {
 		catch (DataIntegrityViolationException e) { //-->Cod de erro retirado do erro ao deletar no postaman
 			throw new DataIntegrityException("Não é possivel excluir uma categoria, que já possui produtos.");
 		}
+	}
+	
+	public List<Categoria> findAll(){
+		return repo.findAll();
 	}
 	
 }
